@@ -10,15 +10,18 @@ class PropertiesController < ApplicationController
   # GET /properties/1
   # GET /properties/1.json
   def show
+    @nearest_stations = @property.nearest_stations
   end
 
   # GET /properties/new
   def new
     @property = Property.new
+    2.times { @property.nearest_stations.build}
   end
 
   # GET /properties/1/edit
   def edit
+    @property.nearest_stations.build
   end
 
   # POST /properties
@@ -69,6 +72,6 @@ class PropertiesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def property_params
-      params.require(:property).permit(:name, :rent, :address, :age, :remark)
+      params.require(:property).permit(:name, :rent, :address, :age, :remark, nearest_stations_attributes: [:id, :route_name, :station, :min_foot])
     end
 end

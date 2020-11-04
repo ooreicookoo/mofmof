@@ -25,5 +25,27 @@
   <%= @property.remark %>
 </p>
 
+<%= @nearest_station.each_with_index(1) do |nearest_station, i| %>
+  <h4>
+    最寄り駅
+    <%= i + 1 %>
+  </h4>
+
+<p>
+  <strong>Route name:</strong>
+  <%= @nearest_station.route_name %>
+</p>
+
+<p>
+  <strong>Station:</strong>
+  <%= @nearest_station.station %>
+</p>
+
+<p>
+  <strong>Min foot:</strong>
+  <%= @nearest_station.min_foot %>
+</p>
+<% end %>
+
 <%= link_to 'Edit', edit_property_path(@property) %> |
 <%= link_to 'Back', properties_path %>
