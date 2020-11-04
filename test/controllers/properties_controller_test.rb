@@ -16,11 +16,11 @@ class PropertiesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should create property" do
-    assert_difference('Propertie.count') do
+    assert_difference('Property.count') do
       post properties_url, params: { property: { address: @property.address, age: @property.age, name: @property.name, remark: @property.remark, rent: @property.rent } }
     end
 
-    assert_redirected_to property_url(Propertie.last)
+    assert_redirected_to property_url(Property.last)
   end
 
   test "should show property" do
@@ -39,7 +39,7 @@ class PropertiesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should destroy property" do
-    assert_difference('Propertie.count', -1) do
+    assert_difference('Property.count', -1) do
       delete property_url(@property)
     end
 
