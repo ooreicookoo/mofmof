@@ -52,7 +52,7 @@ class PropertiesController < ApplicationController
         :station,
         :min_foot,
         :property_id,
-        :id ])
+        :id])
   end
   def set_property
     @property = Property.find(params[:id])
