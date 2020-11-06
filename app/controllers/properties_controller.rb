@@ -23,7 +23,6 @@ class PropertiesController < ApplicationController
     if @property.save
       redirect_to properties_path, notice: "物件を登録しました"
     else
-      2.times { @property.nearest_stations.build }
       render :new
     end
   end
@@ -42,10 +41,6 @@ class PropertiesController < ApplicationController
   end
 
   private
-  def set_property
-    @property = Property.find(params[:id])
-  end
-
   def property_params
     params.require(:property).permit(
       :name,
@@ -53,7 +48,14 @@ class PropertiesController < ApplicationController
       :address,
       :age,
       :remark,
-      nearest_stations_attributes: {}#::route_name,:station,:min_foot]
-    )
+      nearest_stations_attributes: [
+        :route_name,
+        :station,
+        :min_foot,
+        :property_id,
+        :id ])
+  end
+  def set_property
+    @property = Property.find(params[:id])
   end
 end
