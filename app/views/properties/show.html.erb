@@ -18,10 +18,10 @@
   <strong>備考:</strong>
   <%= @property.remark %>
 </p>
-
-<% if @nearest_station.present? %>
 <hr>
-  <% @nearest_station.each_with_index do |nearest_station, i| %>
+<% if @nearest_stations.present? %>
+<hr>
+  <% @nearest_stations.each_with_index do |nearest_station, i| %>
   　<h4>最寄り駅 <%= i + 1 %></h4>
     <p>
       <strong>路線名:</strong>

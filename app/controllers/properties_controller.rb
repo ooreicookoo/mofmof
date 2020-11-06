@@ -26,7 +26,6 @@ class PropertiesController < ApplicationController
       render :new
     end
   end
-
   def update
       if @property.update(property_params)
         redirect_to properties_path, notice: "物件を編集しました！"
@@ -48,7 +47,7 @@ class PropertiesController < ApplicationController
       :address,
       :age,
       :remark,
-      nearest_stations_attributes: [
+      nearest_stations: [
         :route_name,
         :station,
         :min_foot,
