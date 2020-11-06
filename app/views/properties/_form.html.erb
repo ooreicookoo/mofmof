@@ -1,5 +1,5 @@
-<%= form_with(model: property, local: true) do |form| %>
-  <% if property.errors.any? %>
+<%= form_with(model: @property, local: true) do |form| %>
+  <% if @property.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(property.errors.count, "error") %> prohibited this property from being saved:</h2>
 
@@ -39,18 +39,18 @@
   <%= form.fields_for :nearest_stations do |nearest_station| %>
     <h4>最寄り駅 <%= nearest_station.index + 1 %></h4>
     <div class="field">
-      <%= form.label :路線名 %>
-      <%= form.text_field :route_name %>
+      <%= nearest_station.label :路線名 %>
+      <%= nearest_station.text_field :route_name %>
     </div>
 
     <div class="field">
-      <%= form.label :駅名 %>
-      <%= form.text_field :station %>
+      <%= nearest_station.label :駅名 %>
+      <%= nearest_station.text_field :station %>
     </div>
 
     <div class="field">
-      <%= form.label :徒歩分数 %>
-      <%= form.number_field :min_foot %>
+      <%= nearest_station.label :徒歩分数 %>
+      <%= nearest_station.number_field :min_foot %>
     </div>
   <% end %>
   <div class="actions">
